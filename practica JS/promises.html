@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica Js</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script>
+        const URL = 'https://swapi.co/api/people/'
+        const opts = { crossDomain: true }
+
+        const onSuccess = personaje => personaje.map(({ name }) => console.log(`el personaje es ${name}`))
+        const onError = id => console.log(`el personaje ${id} no se pudo`)
+
+        const OBTENER_PERSONA = (id) => new Promise((resolve, reject) => {
+            $.get(URL + id, opts, (data) => resolve(data))
+                .fail(() => reject(id))
+        })
+
+        async function obtenerPersonajes() {
+            var ids = [1, 2, 3, 4, 5, 6, 7]
+
+            var promesas = ids.map(id => OBTENER_PERSONA(id))
+
+            try {
+                var personajes = await Promise.all(promesas)
+                onSuccess(personajes)
+            } catch (id) {
+                onError(id)
+            }
+        }
+
+        obtenerPersonajes()
+      
+    </script>
+</body>
+
+</html>

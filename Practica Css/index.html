@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transiciones CSS</title>
+    <style>
+        /* Si no colocas las propiedades a la cual quieres añadirle una transición, CSS tomará todas las propiedades que tenga a su disposición y la cambiará   */
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pelota {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+            /* transition-property: width, height; */
+            /* transition-duration: 1s; */
+            /* transition-delay: 1s; */
+            /* transition-timing-function: ease;  */
+            transition: 1s;
+            /* posición absoluta ayuda a que las pelotas queden dentro de la canasta */
+            position: absolute;
+            /* flex ayuda a que el texto se centre */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .pelota.a {
+            background: red;
+            left: 0;
+        }
+
+        .pelota.b {
+            background: blue;
+            right: 0;
+        }
+
+        .canasta {
+            border: 1px solid red;
+            position: relative;
+            height: 100px;
+            width: 100%;
+        }
+
+        .canasta:hover.pelota.a {
+            /* Obtiene el ancho correcto para que las 2 pelotas se encuentren */
+            left: calc(50% - 100px);
+        }
+
+        .canasta:hover.pelota.b {
+            right: calc(50% - 100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canasta">
+        <div class="pelota a">Hola</div>
+        <div class="pelota b">Mundo</div>
+    </div>
+</body>
+
+</html>
