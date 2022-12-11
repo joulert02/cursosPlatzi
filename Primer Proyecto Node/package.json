@@ -14,7 +14,7 @@
   "author": "Jouler Talaigua Hoyos",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^14.0.0",
